@@ -7,7 +7,6 @@ resource "aws_ecs_task_definition" "grizzly_ec2" {
   network_mode             = "bridge"
   requires_compatibilities = ["EC2"]
   cpu                      = "256"
-  memory                   = "512"
 
   container_definitions = jsonencode([
     {
@@ -15,6 +14,8 @@ resource "aws_ecs_task_definition" "grizzly_ec2" {
       image     = "762849587550.dkr.ecr.us-east-1.amazonaws.com/sedai-labs/grizzly-one-ecs:latest"
       essential = true
       cpu       = 0
+      memory    = 351
+      memoryReservation = 351
     }
   ])
 }
